@@ -6,10 +6,14 @@ const app = http.createServer(function(req, res){
 
   if(url === '/')
     url = '/index.html';
-  if(url === 'favicon.ico')
+   // favicon : 신경쓰지 말 것. 시험 안냄 
+  if(url === '/favicon.ico')
     return res.writeHead(404);
-    res.writeHead(200);
-    res.end("Hello");
+
+  res.writeHead(200);
+    // __dirname : D:\Min\2023-NODE\문법
+    const htmlCode = fs.readFileSync(__dirname + url);
+    res.end(htmlCode);
 });
 
 app.listen(3333);
