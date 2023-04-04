@@ -8,7 +8,7 @@ for(let i=0; i<fruits.length; i++){
 fruits.forEach(function(f){
   console.log(f);
 })
-
+// forof문
 for(const f of fruits){
   console.log(f);
 }
