@@ -6,9 +6,10 @@ const path = require('path');
 function getAllFiles(dirPath, arrOfFiles) {
     //dirPath에 있는 모든 파일목록의 배열(하위 경로는 불가)
     const files = fs.readdirSync(dirPath);
-
+    
     files.forEach(function(file) {
-      const destPath = dirPath+"\\"+file;
+      // const destPath = dirPath+"\\"+file;
+      const destPath = path.join(dirPath, file);
       //폴더(디렉토리)라면 해당 폴더에 있는 모든 파일목록들을 체크한다
         if(fs.statSync(dirPath + "\\" + file).isDirectory()) {
            getAllFiles(destPath,arrOfFiles);
