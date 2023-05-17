@@ -11,6 +11,10 @@ const server = http.createServer(function(req, res){
     // 파일입출력 : 파일을 한꺼번에 처리함
     // 스트림 : 파일을 부분적으로 쪼개서 실시간으로 처리함
     fs.createReadStream(path.join(__dirname, 'html', 'index.html')).pipe(res);
+  } else if(req.url === '/food'){
+    fs.createReadStream(path.join(__dirname, 'html', 'food.html')).pipe(res);
+  } else{
+    fs.createReadStream(path.join(__dirname, 'html', '404.html')).pipe(res);
   }
 
 });
