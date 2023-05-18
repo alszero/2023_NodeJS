@@ -9,11 +9,9 @@ const index = {
   name: 'KMY',
   here: '한국'
 };
-const idx = {
-  food1: 'cookie',
-  food2: '떡볶이',
-  food3: '치킨'
-};
+const food1 = "쿠키";
+const food2 = "떡볶이";
+const food3 = "치킨";
 const server = http.createServer(function(req, res){
   console.log(req.url);
 
@@ -27,7 +25,7 @@ const server = http.createServer(function(req, res){
     // , {name: index.name, here: index.here})
     // .then((data) => res.end(data)); // 데이터를 넘겨받은 ejs코드(data)를 클라이언트에게 보낸다.
     ejs.renderFile(path.join(__dirname, 'template', 'food.ejs')
-    , {food1: idx.food1, food2: idx.food2, food3: idx.food3}).then((data)=> res.end(data));
+    , {food1, food2, food3}).then((data)=> res.end(data));
   } else if(req.url === '/food'){
     fs.createReadStream(path.join(__dirname, 'html', 'food.html')).pipe(res);
   } else{
