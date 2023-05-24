@@ -26,7 +26,9 @@ const server = http.createServer(function(req, res){
     ejs.renderFile(path.join(__dirname, 'template', 'food.ejs')
     , {food}).then((data)=> res.end(data));
   } else if(req.url === '/food'){
-    fs.createReadStream(path.join(__dirname, 'html', 'food.html')).pipe(res);
+    ejs.renderFile(path.join(__dirname, 'template', 'food.ejs') // 데이터를 넘겨받은 ejs코드(data)를 클라이언트에게 보냄
+    , {food : food})
+    .then((data) => res.end(data))
   } else{
     fs.createReadStream(path.join(__dirname, 'html', '404.html')).pipe(res);
   }
