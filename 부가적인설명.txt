@@ -14,4 +14,5 @@
 }
 
 package.json에서
-"dependencies" 속성
+"dependencies" 속성과 devDependencies는 npm i(nstall)을 하면 패키지가 설치된다
+devDependencies의 경우, 개발용으로만 필요한 패키지를 명세한다
