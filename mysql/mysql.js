@@ -13,8 +13,30 @@ const pool = mysql.createPool({
     database: process.env.DB_DB,
 });
 
+// const updateData = {
+//     name: "sungwoong",
+//     kills: 15,
+//     deaths: 10
+// }
+
+// pool.query("UPDATE player SET ? WHERE name = ?", [updateData, "bengi"])
+//     .then(() => {
+//         console.log("UPDATE 성공");
+//     })
+//     .catch(err=> {
+//         console.error(err);
+//     })
+
+pool.query("DELETE from player WHERE name = ?", "sungwoong")
+    .then(() => {
+        console.log("DELETE 성공");
+    })
+    .catch(err=> {
+        console.error(err);
+    })
+
 pool.query("SELECT * FROM player")
-    .then((results) => {
+    .then(([results]) => {
         for(const r of results) {
             console.log(r);
         }
@@ -22,6 +44,23 @@ pool.query("SELECT * FROM player")
     .catch(err => {
         console.error(err);
     });
+
+// const insetData = {
+//     name: 'bengi',
+//     lane: 'jg',
+//     team: 't1',
+//     kills: 5,
+//     deaths: 3,
+//     assists: 8
+// };
+
+// pool.query("INSERT INTO player SET ?", insetData)
+//     .then(()=>{
+//         console.log('INSERT 성공')
+//     })
+//     .catch(err => {
+//         console.error(err);
+//     })
 
 // pool.query("SELECT * FROM player", (err, results) => {
 //     for (const r of results){
