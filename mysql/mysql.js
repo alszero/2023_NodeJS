@@ -45,6 +45,8 @@ pool.query("SELECT * FROM player")
         console.error(err);
     });
 
+// select문은 결과값을 받아야 한다
+
 // const insetData = {
 //     name: 'bengi',
 //     lane: 'jg',
@@ -53,6 +55,7 @@ pool.query("SELECT * FROM player")
 //     deaths: 3,
 //     assists: 8
 // };
+
 
 // pool.query("INSERT INTO player SET ?", insetData)
 //     .then(()=>{
