@@ -12,7 +12,26 @@ app.get("/set", (req, res) => {
 app.get("/get", (req, res)=>{
   const cookie = req.headers.cookie;
   if(cookie) {
-    res.send(cookie);
+    // "name="이 잇는 idx의 시작값을 찾는데, 존재하지 않으면 -1 return
+    const nameStartIdx = cookie.indexOf("name=");
+    
+    // name이 존재한다면
+    if(nameStartIdx > -1){
+      let name = cookie.substring(nameStartIdx+5);
+      const nameEndIdx = name.indexOf(";");
+      // 문자열에 끝에 ';'이 있으면
+      if(nameEndIdx > -1){
+        name = name.substring(0, nameEndIdx);
+        res.send(`Hello ${name}`);
+      }
+      // 문자열 끝에 ';'이 없으면 (쿠키가 하나만 있거나 name이 마지막 쿠키라면)
+      else{
+        res.send(`Hello ${name}`);
+      }
+    }
+    else{
+      res.send("name이 존재하지 않음");
+    }
   }
   else {
     res.send("쿠키가 없어요");
