@@ -2,11 +2,6 @@
   "name": "2023-node",
   "version": "1.0.0",
   "description": "삼미웹정",
-  "main": "./grace/main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./mysql/mysql.js"
-  },
   "author": "김민영",
   "license": "ISC",
   "dependencies": {
